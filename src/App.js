@@ -1,12 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './Components/Header';
+import Sidebar from './Components/Sidebar';
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-
+    <>
+      <Header />
+      <div className='flex'>
+        <div className='w-[300px]'>
+          <Sidebar />
+        </div>
+      </div>
+    </>
   );
 }
 
