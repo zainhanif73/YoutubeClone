@@ -16,10 +16,10 @@ import Comedy from "../svgs/Comedy"
 import color from '../Style/Sidebar'
 
 
-function Sidebar() {
-    const [active, setActive] = useState(1)
+function Sidebar({active, setActive}) {
+    
     return (
-        <div className='flex flex-col ml-4 w-[200px] h-[100vh] overflow-scroll top-0 bottom-0'>
+        <div className='flex flex-col ml-4 w-[170px] h-[100vh] overflow-scroll top-0 bottom-0 pr-8'>
             <div className={active===1? 'flex text-white cursor-pointer text-[15px] mt-8 mb-8 bg-[#FC1503] pb-2 rounded-full':'flex text-white cursor-pointer text-[15px] mt-8 mb-8'} onClick={()=>{setActive(1)}}> <span className={color.textColor}> {active===1? <Home color='#FFFFFF'/>:<Home color='#FC1503'/> }</span> <span className='pt-2 pl-3'>New</span></div>
             <div className={active===2? color.redColor: color.simpleColor} onClick={()=>{setActive(2)}}> <span className={color.textColor}> {active===2? <Tag color='#FFFFFF'/>:<Tag color='#FC1503'/> }</span> <span className='pt-2 pl-3'>Js Mastery</span></div>
             <div className={active===3? color.redColor: color.simpleColor} onClick={()=>{setActive(3)}}> <span className={color.textColor}> {active===3? <Tag color='#FFFFFF'/>:<Tag color='#FC1503'/> }</span> <span className='pt-2 pl-3'>Coding</span></div>
