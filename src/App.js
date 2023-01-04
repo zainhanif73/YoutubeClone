@@ -10,8 +10,8 @@ function App() {
   return (
     <>
       <Header />
-      <div className='flex'>
-        <div className='w-[180px]'>
+      <div className='flex flex-col md:flex-row'>
+        <div className='md:w-[180px] mt-8 md:mt-0'>
           <Sidebar active={active} setActive={setActive} />
         </div>
         <div>

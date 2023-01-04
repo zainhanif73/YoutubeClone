@@ -19,9 +19,9 @@ import color from '../Style/Sidebar'
 function Sidebar({active, setActive}) {
     
     return (
-        <div className='flex flex-col ml-4 w-[170px] h-[100vh] overflow-scroll top-0 bottom-0 pr-8'>
-            <div className={active===1? 'flex text-white cursor-pointer text-[15px] mt-8 mb-8 bg-[#FC1503] pb-2 rounded-full':'flex text-white cursor-pointer text-[15px] mt-8 mb-8'} onClick={()=>{setActive(1)}}> <span className={color.textColor}> {active===1? <Home color='#FFFFFF'/>:<Home color='#FC1503'/> }</span> <span className='pt-2 pl-3'>New</span></div>
-            <div className={active===2? color.redColor: color.simpleColor} onClick={()=>{setActive(2)}}> <span className={color.textColor}> {active===2? <Tag color='#FFFFFF'/>:<Tag color='#FC1503'/> }</span> <span className='pt-2 pl-3'>Js Mastery</span></div>
+        <div className='flex md:flex-col gap-[1.5rem] md:gap-0 ml-4 md:w-[170px] md:h-[100vh] overflow-scroll top-0 bottom-0 pr-8'>
+            <div className={active===1? 'flex text-white cursor-pointer text-[15px] md:mt-8 mb-8 bg-[#FC1503] pb-2 pr-[14px] md:pr-0 rounded-full':'flex text-white cursor-pointer text-[15px] md:mt-8 mb-8'} onClick={()=>{setActive(1)}}> <span className={color.textColor}> {active===1? <Home color='#FFFFFF'/>:<Home color='#FC1503'/> }</span> <span className='pt-2 pl-3'>New</span></div>
+            <div className={active===2? color.redColor: color.simpleColor} onClick={()=>{setActive(2)}}> <span className={color.textColor}> {active===2? <Tag color='#FFFFFF'/>:<Tag color='#FC1503'/> }</span> <span className='pt-2 pl-3'>Mastery</span></div>
             <div className={active===3? color.redColor: color.simpleColor} onClick={()=>{setActive(3)}}> <span className={color.textColor}> {active===3? <Tag color='#FFFFFF'/>:<Tag color='#FC1503'/> }</span> <span className='pt-2 pl-3'>Coding</span></div>
             <div className={active===4? color.redColor: color.simpleColor} onClick={()=>{setActive(4)}}> <span className={color.textColor}> {active===4? <Tag color='#FFFFFF'/>:<Tag color='#FC1503'/> }</span> <span className='pt-2 pl-3'>ReactJs</span></div>
             <div className={active===5? color.redColor: color.simpleColor} onClick={()=>{setActive(5)}}> <span className={color.textColor}> {active===5? <Tag color='#FFFFFF'/>:<Tag color='#FC1503'/> }</span> <span className='pt-2 pl-3'>NextJS</span></div>
