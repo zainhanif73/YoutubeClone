@@ -11,7 +11,7 @@ function App() {
     <>
       <Header />
       <div className='flex'>
-        <div className='w-[300px]'>
+        <div className='w-[180px]'>
           <Sidebar active={active} setActive={setActive} />
         </div>
         <div>
