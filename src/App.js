@@ -6,10 +6,11 @@ import Sidebar from './Components/Sidebar';
 
 function App() {
   const [active, setActive] = useState(1)
+  const [search, setSearch] = useState("")
 
   return (
     <>
-      <Header />
+      <Header search={search} setSearch={setSearch}/>
       <div className='flex flex-col md:flex-row'>
         <div className='md:w-[180px] mt-8 md:mt-0'>
           <Sidebar active={active} setActive={setActive} />
