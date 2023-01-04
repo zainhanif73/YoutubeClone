@@ -6,14 +6,14 @@ import Tick from "../svgs/Tick"
 function Dashboard({ active, setActive }) {
 
     const [data, setData] = useState();
-    const [channel, setChannel] = useState();
+    var [channel, setChannel] = useState();
     const url = {
         1: 'https://youtube-v31.p.rapidapi.com/search',
         2: 'https://youtube-v31.p.rapidapi.com/channels'
     }
     const params = [
         {
-            relatedToVideoId: '7ghhRHRP6t4',
+            q: 'new videoes',
             part: 'id,snippet',
             type: 'video',
             maxResults: '50'
@@ -25,49 +25,49 @@ function Dashboard({ active, setActive }) {
             maxResults: '50'
         },
         {
-            q: 'coding',
+            q: 'coding videoes',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
             order: 'date'
         },
         {
-            q: 'reactjs',
+            q: 'Reactjs course',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
             order: 'date'
         },
         {
-            q: 'nextjs',
+            q: 'nextjs course',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
             order: 'date'
         },
         {
-            q: 'music',
+            q: 'music videoes',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
             order: 'date'
         },
         {
-            q: 'education',
+            q: 'education videoes',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
             order: 'date'
         },
         {
-            q: 'podcast',
+            q: 'podcast videoes',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
             order: 'date'
         },
         {
-            q: 'movie',
+            q: 'new movies',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
@@ -88,42 +88,42 @@ function Dashboard({ active, setActive }) {
             order: 'date'
         },
         {
-            q: 'sport',
+            q: 'sport games',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
             order: 'date'
         },
         {
-            q: 'fashion',
+            q: 'fashion videoes',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
             order: 'date'
         },
         {
-            q: 'beauty',
+            q: 'beauty videoes',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
             order: 'date'
         },
         {
-            q: 'comedy',
+            q: 'comedy videos',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
             order: 'date'
         },
         {
-            q: 'gym',
+            q: 'gym videoes',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
             order: 'date'
         },
         {
-            q: 'crypto',
+            q: 'crypto videoes',
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
@@ -166,6 +166,9 @@ function Dashboard({ active, setActive }) {
                 console.error(error);
             });
         }
+        else{
+            setChannel()
+        }
         axios.request(options).then(function (response) {
             // console.log(response.data);
             setData(response.data.items)
@@ -195,7 +198,7 @@ function Dashboard({ active, setActive }) {
                 {active === 16 && <div className='text-white mt-4 font-[600] text-[36px] ml-8'>Gym <span className='text-[#FC1503]'>Videos</span></div>}
                 {active === 17 && <div className='text-white mt-4 font-[600] text-[36px] ml-8'>Crypto <span className='text-[#FC1503]'>Videos</span></div>}
                 <div className='flex flex-wrap'>
-                    {channel && active===2 && <div>
+                    {channel && active === 2 && <div>
                         <div className='flex flex-col w-[300px] mt-8 ml-8' key={channel.items[0].snippet.thumbnails.high.url}>
                             <img className='rounded-full' src={channel.items[0].snippet.thumbnails.high.url} alt="" style={{ width: "182px", height: "182px" }} />
                             <div className='text-[#ffffff] p-6 font-[600]'>
@@ -204,15 +207,16 @@ function Dashboard({ active, setActive }) {
                         </div>
                     </div>}
                     {data && data.length &&
-                        data?.map((data) => (
-                            <div className='flex flex-col w-[300px] ml-8' key={data.snippet.thumbnails.high.url}>
-                                <img src={data.snippet.thumbnails.high.url} alt="" style={{ width: "480px", height: "360px" }} />
-                                <div className='bg-[#1e1e1e] text-[#ffffff] h-[200px] p-6 font-[600]'>
-                                    <span><a href={"https://www.youtube.com/watch?v=" + data.id.videoId} target={'_blank'}>{data.snippet.title}</a> </span>
+                        data?.map((data) => 
+                            <div className='flex flex-col w-[300px] ml-8 ' key={data.snippet.thumbnails.high.url}>
+                                <div className='h-[250px] text-white' style={{backgroundImage:`url(${data.snippet.thumbnails.high.url})`}}></div>
+                                {/* <img src={data.snippet.thumbnails.high.url} alt="" style={{ width: "480px", height: "360px" }} /> */}
+                                <div className='bg-[#1e1e1e] text-[#ffffff] h-[190px] p-6 font-[600]'>
+                                    <span><a className='w-[10px]' href={"https://www.youtube.com/watch?v=" + data.id.videoId} target={'_blank'}>{data.snippet.title}</a> </span>
                                     <div className='text-[#545554] mt-4 flex cursor-pointer' ><a className='flex' target={"_blank"} href={"https://www.youtube.com/" + data.snippet.channelTitle}>{data.snippet.channelTitle} <span className='ml-2 pt-1'><Tick /></span></a></div>
                                 </div>
                             </div>
-                        ))
+                        )
                     }
                 </div>
             </div>
