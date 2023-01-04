@@ -169,6 +169,7 @@ function Dashboard({ active, setActive }) {
         else{
             setChannel()
         }
+        setData()
         axios.request(options).then(function (response) {
             // console.log(response.data);
             setData(response.data.items)
@@ -208,8 +209,8 @@ function Dashboard({ active, setActive }) {
                     </div>}
                     {data && data.length &&
                         data?.map((data) => 
-                            <div className='flex flex-col w-[300px] ml-8 ' key={data.snippet.thumbnails.high.url}>
-                                <div className='h-[250px] text-white' style={{backgroundImage:`url(${data.snippet.thumbnails.high.url})`}}></div>
+                            <div className='flex flex-col w-[300px] ml-8 mt-2' key={data.snippet.thumbnails.high.url}>
+                                <div className='h-[200px] text-white' style={{backgroundImage:`url(${data.snippet.thumbnails.high.url})`}}></div>
                                 {/* <img src={data.snippet.thumbnails.high.url} alt="" style={{ width: "480px", height: "360px" }} /> */}
                                 <div className='bg-[#1e1e1e] text-[#ffffff] h-[190px] p-6 font-[600]'>
                                     <span><a className='w-[10px]' href={"https://www.youtube.com/watch?v=" + data.id.videoId} target={'_blank'}>{data.snippet.title}</a> </span>
