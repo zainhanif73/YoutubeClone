@@ -10,13 +10,13 @@ function App() {
 
   return (
     <>
-      <Header search={search} setSearch={setSearch}/>
+      <Header search={search} setSearch={setSearch} active={active} setActive={setActive}/>
       <div className='flex flex-col md:flex-row'>
         <div className='md:w-[180px] mt-8 md:mt-0'>
-          <Sidebar active={active} setActive={setActive} />
+          <Sidebar search={search} setSearch={setSearch} active={active} setActive={setActive} />
         </div>
         <div>
-          <Dashboard active={active} setActive={setActive} />
+          <Dashboard search={search} setSearch={setSearch} active={active} setActive={setActive} />
         </div>
       </div>
     </>

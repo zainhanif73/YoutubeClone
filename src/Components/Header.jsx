@@ -1,7 +1,7 @@
 import React from 'react'
 import Search from '../svgs/Search'
 
-function Header({search,setSearch}) {
+function Header({search,setSearch,active,setActive}) {
     return (
         <div className='bg-[#000000] flex justify-between mt-2'>
             <div className='ml-5 py-2'>
@@ -11,7 +11,8 @@ function Header({search,setSearch}) {
                 <span><input onChange={(e)=>{setSearch(e.target.value)}} className='w-[150px] md:w-[350px] outline-0  appearance-none focus:outline-none ml-3 pb-1 h-[30px] placeholder:text-[15px]' placeholder="Search..." type="text" name="search" id="search" /></span>
                 <span className='cursor-pointer p-1 mb-1 rounded-full w-[32px]' onClick={()=>{
                     console.log(search)
-                }}><Search/></span>
+                    setActive(18);
+                }}><Search color='#FC1503'/></span>
             </div>
         </div>
     )

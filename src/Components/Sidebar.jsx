@@ -14,9 +14,10 @@ import Gym from "../svgs/Gym"
 import Crypto from "../svgs/Crypto"
 import Comedy from "../svgs/Comedy"
 import color from '../Style/Sidebar'
+import Search from '../svgs/Search'
 
 
-function Sidebar({active, setActive}) {
+function Sidebar({active,setActive,search,setSearch}) {
     
     return (
         <div className='flex md:flex-col gap-[1.5rem] md:gap-0 ml-4 md:w-[170px] md:h-[100vh] overflow-scroll top-0 bottom-0 pr-8'>
@@ -37,6 +38,7 @@ function Sidebar({active, setActive}) {
             <div className={active===15? color.redColor: color.simpleColor} onClick={()=>{setActive(15)}}> <span className={color.textColor}> {active===15? <Comedy color='#FFFFFF'/>:<Comedy color='#FC1503'/> }</span> <span className='pt-2 pl-3'>Comedy</span></div>
             <div className={active===16? color.redColor: color.simpleColor} onClick={()=>{setActive(16)}}> <span className={color.textColor}> {active===16? <Gym color='#FFFFFF'/>:<Gym color='#FC1503'/> }</span> <span className='pt-2 pl-3'>Gym</span></div>
             <div className={active===17? color.redColor: color.simpleColor} onClick={()=>{setActive(17)}}> <span className={color.textColor}> {active===17? <Crypto color='#FFFFFF'/>:<Crypto color='#FC1503'/> }</span> <span className='pt-2 pl-3'>Crypto</span></div>
+            <div className={active===18? color.redColor: color.simpleColor} onClick={()=>{setActive(18)}}> <span className={color.textColor}> {active===18? <Search color='#FFFFFF'/>:<Search color='#FC1503'/> }</span> <span className='pt-2 pl-3'>{search}</span></div>
         </div>
     )
 }

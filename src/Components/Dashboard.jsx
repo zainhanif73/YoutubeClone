@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { act } from 'react-dom/test-utils';
 import Tick from "../svgs/Tick"
 
-function Dashboard({ active, setActive }) {
+function Dashboard({ active, setActive, search, setSearch }) {
 
     const [data, setData] = useState();
     var [channel, setChannel] = useState();
@@ -143,22 +143,40 @@ function Dashboard({ active, setActive }) {
         }
     };
 
+    const options1 = {
+        method: 'GET',
+        url: url[2],
+        params: {
+            part: 'snippet,statistics',
+            id: 'UCmXmlB4-HJytD7wek0Uo97A'
+        },
+        headers: {
+            'X-RapidAPI-Key': 'baa16a845cmshb3b3d7f2b8245b0p1e8cc3jsne3a316a8e0a4',
+            'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+        }
+    }
+
+    const searchOption = {
+        method: 'GET',
+        url: url[1],
+        params:
+        {
+            q: search, 
+            part: 'snippet,id',
+            regionCode: 'US',
+            maxResults: '50',
+            order: 'date'
+        },
+        headers: {
+            'X-RapidAPI-Key': 'baa16a845cmshb3b3d7f2b8245b0p1e8cc3jsne3a316a8e0a4',
+            'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+        }
+    }
 
     useEffect(() => {
         if (active == 2) {
             axios.request(
-                {
-                    method: 'GET',
-                    url: url[2],
-                    params: {
-                        part: 'snippet,statistics',
-                        id: 'UCmXmlB4-HJytD7wek0Uo97A'
-                    },
-                    headers: {
-                        'X-RapidAPI-Key': 'baa16a845cmshb3b3d7f2b8245b0p1e8cc3jsne3a316a8e0a4',
-                        'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-                    }
-                }
+                options1
             ).then(function (response) {
                 console.log(response.data);
                 setChannel(response.data)
@@ -166,16 +184,26 @@ function Dashboard({ active, setActive }) {
                 console.error(error);
             });
         }
-        else{
+        else {
             setChannel()
         }
         setData()
-        axios.request(options).then(function (response) {
-            // console.log(response.data);
-            setData(response.data.items)
-        }).catch(function (error) {
-            console.error(error);
-        });
+        if (active !== 18) {
+            axios.request(options).then(function (response) {
+                // console.log(response.data);
+                setData(response.data.items)
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
+        else {
+            axios.request(searchOption).then(function (response) {
+                // console.log(response.data);
+                setData(response.data.items)
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
     }, [active])
 
     return (
@@ -198,6 +226,7 @@ function Dashboard({ active, setActive }) {
                 {active === 15 && <div className='text-white mt-4 font-[600] text-[36px] ml-8'>Comedy <span className='text-[#FC1503]'>Videos</span></div>}
                 {active === 16 && <div className='text-white mt-4 font-[600] text-[36px] ml-8'>Gym <span className='text-[#FC1503]'>Videos</span></div>}
                 {active === 17 && <div className='text-white mt-4 font-[600] text-[36px] ml-8'>Crypto <span className='text-[#FC1503]'>Videos</span></div>}
+                {active === 18 && <div className='text-white mt-4 font-[600] text-[36px] ml-8'>{search} <span className='text-[#FC1503]'>Videos</span></div>}
                 <div className='flex flex-wrap'>
                     {channel && active === 2 && <div>
                         <div className='flex flex-col w-[300px] mt-8 ml-8' key={channel.items[0].snippet.thumbnails.high.url}>
@@ -208,9 +237,9 @@ function Dashboard({ active, setActive }) {
                         </div>
                     </div>}
                     {data && data.length &&
-                        data?.map((data) => 
+                        data?.map((data) =>
                             <div className='flex flex-col w-[300px] ml-8 mt-2' key={data.snippet.thumbnails.high.url}>
-                                <div className='h-[200px] text-white' style={{backgroundImage:`url(${data.snippet.thumbnails.high.url})`}}></div>
+                                <div className='h-[200px] text-white' style={{ backgroundImage: `url(${data.snippet.thumbnails.high.url})` }}></div>
                                 {/* <img src={data.snippet.thumbnails.high.url} alt="" style={{ width: "480px", height: "360px" }} /> */}
                                 <div className='bg-[#1e1e1e] text-[#ffffff] h-[190px] p-6 font-[600]'>
                                     <span><a className='w-[10px]' href={"https://www.youtube.com/watch?v=" + data.id.videoId} target={'_blank'}>{data.snippet.title}</a> </span>
