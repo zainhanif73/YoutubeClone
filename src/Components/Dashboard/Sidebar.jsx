@@ -38,7 +38,6 @@ function Sidebar({active,setActive,search,setSearch}) {
             <div className={active===15? color.redColor: color.simpleColor} onClick={()=>{setActive(15)}}> <span className={color.textColor}> {active===15? <Comedy color='#FFFFFF'/>:<Comedy color='#FC1503'/> }</span> <span className='pt-2 pl-3'>Comedy</span></div>
             <div className={active===16? color.redColor: color.simpleColor} onClick={()=>{setActive(16)}}> <span className={color.textColor}> {active===16? <Gym color='#FFFFFF'/>:<Gym color='#FC1503'/> }</span> <span className='pt-2 pl-3'>Gym</span></div>
             <div className={active===17? color.redColor: color.simpleColor} onClick={()=>{setActive(17)}}> <span className={color.textColor}> {active===17? <Crypto color='#FFFFFF'/>:<Crypto color='#FC1503'/> }</span> <span className='pt-2 pl-3'>Crypto</span></div>
-            {active===18 && <div className={active===18? color.redColor: color.simpleColor} onClick={()=>{setActive(18)}}> <span className={color.textColor}> {active===18? <Search color='#FFFFFF'/>:<Search color='#FC1503'/> }</span> <span className='pt-2 pl-3'>{search}</span></div>}
             <p className='text-[#ffffff] text-[10px]'>Copyright 2023 By Zain Hanif</p>
         </div>
     )
