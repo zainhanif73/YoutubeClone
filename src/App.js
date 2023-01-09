@@ -1,24 +1,32 @@
-import { useState } from 'react';
+import { Suspense } from 'react';
+import Main from './Components/Main';
 import './App.css';
-import Dashboard from './Components/Dashboard';
-import Header from './Components/Header';
-import Sidebar from './Components/Sidebar';
+import { Route, Routes } from 'react-router-dom';
+import Channel from './Components/Channel/Channel';
+
 
 function App() {
-  const [active, setActive] = useState(1)
-  const [search, setSearch] = useState("")
 
   return (
     <>
-      <Header search={search} setSearch={setSearch} active={active} setActive={setActive}/>
-      <div className='flex flex-col md:flex-row'>
-        <div className='md:w-[180px] mt-8 md:mt-0'>
-          <Sidebar search={search} setSearch={setSearch} active={active} setActive={setActive} />
-        </div>
-        <div>
-          <Dashboard search={search} setSearch={setSearch} active={active} setActive={setActive} />
-        </div>
-      </div>
+      <Routes>
+        <Route
+          index
+          element={
+            <Suspense fallback={<div></div>}>
+              <Main />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/channel/:id'
+          element={
+            <Suspense fallback={<div></div>}>
+              <Channel />
+            </Suspense>
+          }
+        />
+      </Routes>
     </>
   );
 }

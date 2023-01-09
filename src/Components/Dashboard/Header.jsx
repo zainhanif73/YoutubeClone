@@ -1,5 +1,5 @@
 import React from 'react'
-import Search from '../svgs/Search'
+import Search from '../../svgs/Search'
 
 function Header({search,setSearch,active,setActive}) {
     return (

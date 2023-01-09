@@ -1,20 +1,20 @@
 import React, { useState } from 'react'
-import Home from "../svgs/Home"
-import Tag from "../svgs/Tag"
-import Music from "../svgs/Music"
-import Education from "../svgs/Education"
-import Podcast from "../svgs/Podcast"
-import Movie from "../svgs/Movie"
-import Game from "../svgs/Gaming"
-import Live from "../svgs/Live"
-import Beautiful from "../svgs/Beautiful"
-import Fashion from "../svgs/Fashion"
-import Sport from "../svgs/Sport"
-import Gym from "../svgs/Gym"
-import Crypto from "../svgs/Crypto"
-import Comedy from "../svgs/Comedy"
-import color from '../Style/Sidebar'
-import Search from '../svgs/Search'
+import Home from "../../svgs/Home"
+import Tag from "../../svgs/Tag"
+import Music from "../../svgs/Music"
+import Education from "../../svgs/Education"
+import Podcast from "../../svgs/Podcast"
+import Movie from "../../svgs/Movie"
+import Game from "../../svgs/Gaming"
+import Live from "../../svgs/Live"
+import Beautiful from "../../svgs/Beautiful"
+import Fashion from "../../svgs/Fashion"
+import Sport from "../../svgs/Sport"
+import Gym from "../../svgs/Gym"
+import Crypto from "../../svgs/Crypto"
+import Comedy from "../../svgs/Comedy"
+import color from '../../Style/Sidebar'
+import Search from '../../svgs/Search'
 
 
 function Sidebar({active,setActive,search,setSearch}) {

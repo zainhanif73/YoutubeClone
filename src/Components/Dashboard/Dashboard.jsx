@@ -1,12 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { act } from 'react-dom/test-utils';
-import Tick from "../svgs/Tick"
+import { Navigate, useNavigate } from 'react-router-dom';
+import Tick from "../../svgs/Tick"
 
 function Dashboard({ active, setActive, search, setSearch }) {
 
     const [data, setData] = useState();
+    const navigate = useNavigate();
     var [channel, setChannel] = useState();
+
     const url = {
         1: 'https://youtube-v31.p.rapidapi.com/search',
         2: 'https://youtube-v31.p.rapidapi.com/channels'
@@ -138,7 +141,7 @@ function Dashboard({ active, setActive, search, setSearch }) {
         url: url[1],
         params: params[active - 1],
         headers: {
-            'X-RapidAPI-Key': 'baa16a845cmshb3b3d7f2b8245b0p1e8cc3jsne3a316a8e0a4',
+            'X-RapidAPI-Key': '6749cf4ac5msh2cbbef89b3ffaedp1b3ec3jsn6a85864b62ce',
             'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
         }
     };
@@ -151,7 +154,7 @@ function Dashboard({ active, setActive, search, setSearch }) {
             id: 'UCmXmlB4-HJytD7wek0Uo97A'
         },
         headers: {
-            'X-RapidAPI-Key': 'baa16a845cmshb3b3d7f2b8245b0p1e8cc3jsne3a316a8e0a4',
+            'X-RapidAPI-Key': '6749cf4ac5msh2cbbef89b3ffaedp1b3ec3jsn6a85864b62ce',
             'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
         }
     }
@@ -168,7 +171,7 @@ function Dashboard({ active, setActive, search, setSearch }) {
             order: 'date'
         },
         headers: {
-            'X-RapidAPI-Key': 'baa16a845cmshb3b3d7f2b8245b0p1e8cc3jsne3a316a8e0a4',
+            'X-RapidAPI-Key': '6749cf4ac5msh2cbbef89b3ffaedp1b3ec3jsn6a85864b62ce',
             'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
         }
     }
@@ -178,7 +181,7 @@ function Dashboard({ active, setActive, search, setSearch }) {
             axios.request(
                 options1
             ).then(function (response) {
-                console.log(response.data);
+                
                 setChannel(response.data)
             }).catch(function (error) {
                 console.error(error);
@@ -239,11 +242,11 @@ function Dashboard({ active, setActive, search, setSearch }) {
                     {data && data.length &&
                         data?.map((data) =>
                             <div className='flex flex-col w-[300px] ml-8 mt-2' key={data.snippet.thumbnails.high.url}>
-                                <div className='h-[200px] text-white' style={{ backgroundImage: `url(${data.snippet.thumbnails.high.url})` }}></div>
+                                <div className='h-[230px] text-white' style={{ backgroundImage: `url(${data.snippet.thumbnails.high.url})` }}></div>
                                 {/* <img src={data.snippet.thumbnails.high.url} alt="" style={{ width: "480px", height: "360px" }} /> */}
-                                <div className='bg-[#1e1e1e] text-[#ffffff] h-[190px] p-6 font-[600]'>
+                                <div className='bg-[#1e1e1e] text-[#ffffff] min-h-[180px] h-fit p-6 font-[600]'>
                                     <span><a className='w-[10px]' href={"https://www.youtube.com/watch?v=" + data.id.videoId} target={'_blank'}>{data.snippet.title}</a> </span>
-                                    <div className='text-[#545554] mt-4 flex cursor-pointer' ><a className='flex' target={"_blank"} href={"https://www.youtube.com/" + data.snippet.channelTitle}>{data.snippet.channelTitle} <span className='ml-2 pt-1'><Tick /></span></a></div>
+                                    <div className='text-[#545554] mt-4 flex cursor-pointer' onClick={()=>{navigate("/channel/"+data.snippet.channelId)}} ><div className='flex' >{data.snippet.channelTitle} <span className='ml-2 pt-1'><Tick /></span></div></div>
                                 </div>
                             </div>
                         )
