@@ -232,7 +232,7 @@ function Dashboard({ active, setActive, search, setSearch }) {
                 {active === 18 && <div className='text-white mt-4 font-[600] text-[36px] ml-8'>{search} <span className='text-[#FC1503]'>Videos</span></div>}
                 <div className='flex flex-wrap'>
                     {channel && active === 2 && <div>
-                        <div className='flex flex-col w-[300px] mt-8 ml-8' key={channel.items[0].snippet.thumbnails.high.url}>
+                        <div className='flex flex-col w-[300px] mt-8 ml-8' key={channel.items[0].snippet.channelId}>
                             <img className='rounded-full' src={channel.items[0].snippet.thumbnails.high.url} alt="" style={{ width: "182px", height: "182px" }} />
                             <div className='text-[#ffffff] p-6 font-[600]'>
                                 <div className='mt-4 flex cursor-pointer' ><a className='flex' target={"_blank"} href={"https://www.youtube.com/" + channel.items[0].snippet.title}>{channel.items[0].snippet.title} <span className='ml-2 pt-1'><Tick /></span></a></div>
@@ -241,7 +241,7 @@ function Dashboard({ active, setActive, search, setSearch }) {
                     </div>}
                     {data && data.length &&
                         data?.map((data) =>
-                            <div className='flex flex-col w-[300px] ml-8 mt-2' key={data.snippet.thumbnails.high.url}>
+                            <div className='flex flex-col w-[300px] ml-8 mt-2' key={data.snippet.channelId}>
                                 <div className='h-[230px] text-white' style={{ backgroundImage: `url(${data.snippet.thumbnails.high.url})` }}></div>
                                 {/* <img src={data.snippet.thumbnails.high.url} alt="" style={{ width: "480px", height: "360px" }} /> */}
                                 <div className='bg-[#1e1e1e] text-[#ffffff] min-h-[180px] h-fit p-6 font-[600]'>
