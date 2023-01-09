@@ -1,10 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Search from '../../svgs/Search'
 
 function Header({search,setSearch,active,setActive}) {
+    const navigate = useNavigate();
     return (
         <div className='bg-[#000000] flex justify-between mt-2'>
-            <div className='ml-5 py-2'>
+            <div className='ml-5 py-2 cursor-pointer' onClick={()=>{navigate("/")}}>
                 <img src="https://i.ibb.co/s9Qys2j/logo.png" alt="Image of Youtube" style={{ height: "45px" }} />
             </div>
             <div className='flex justify-between mt-2 ml-8 rounded-full pr-2 pt-2 pb-4 w-[200px] md:w-[420px] mr-16 bg-[#ffffff] h-[40px] w-[300px]'>
