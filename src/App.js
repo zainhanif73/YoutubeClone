@@ -32,7 +32,7 @@ function App() {
           }
         />
         <Route
-          path='/videoes/:id'
+          path='/videoes/:channelId/:videoId'
           element={
             <Suspense fallback={<div></div>}>
               <Videoes />

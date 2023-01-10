@@ -208,9 +208,7 @@ function Dashboard({ active, setActive, search, setSearch }) {
             });
         }
     }, [active])
-    
-    console.log(channel)
-
+        
     return (
         <>
             <div className='flex flex-col'>
@@ -243,11 +241,11 @@ function Dashboard({ active, setActive, search, setSearch }) {
                     </div>}
                     {data && data.length &&
                         data?.map((data, index) =>
-                            <div className='flex flex-col cursor-pointer w-[300px] ml-8 mt-2'  key={data.snippet.channelId+index}>
-                                <div className='h-[180px] text-white' onClick={()=>{navigate("/videoes/"+data.snippet.channelId+"+"+data.id.videoId)}} style={{ backgroundSize:'cover',backgroundPosition:'center center' ,backgroundRepeat:'no-repeat',backgroundImage: `url(${data.snippet.thumbnails.high.url})` }}></div>
+                            <div className='flex flex-col cursor-pointer w-[300px] ml-8 mt-2'  key={data.snippet.channelId+"/"+index}>
+                                <div className='h-[180px] text-white' onClick={()=>{navigate("/videoes/"+data.snippet.channelId+"/"+data.id.videoId)}} style={{ backgroundSize:'cover',backgroundPosition:'center center' ,backgroundRepeat:'no-repeat',backgroundImage: `url(${data.snippet.thumbnails.high.url})` }}></div>
                                 {/* <img src={data.snippet.thumbnails.high.url} alt="" style={{ width: "480px", height: "360px" }} /> */}
                                 <div className='bg-[#1e1e1e] text-[#ffffff] h-[130px] p-6 font-[600]'>
-                                    <span><div className='hover:cursor-pointer' onClick={()=>{navigate("/videoes/"+data.snippet.channelId+"+"+data.id.videoId)}}>{data.snippet.title.substring(0, 55)}</div> </span>
+                                    <span><div className='hover:cursor-pointer' onClick={()=>{navigate("/videoes/"+data.snippet.channelId+"/"+data.id.videoId)}}>{data.snippet.title.substring(0, 55)}</div> </span>
                                     <div className='text-[#545554] mt-4 flex cursor-pointer' onClick={()=>{navigate("/channel/"+data.snippet.channelId)}} ><div className='flex' >{data.snippet.channelTitle} <span className='ml-2 pt-1'><Tick /></span></div></div>
                                 </div>
                             </div>
