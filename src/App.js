@@ -10,16 +10,17 @@ import Header from './Components/Dashboard/Header';
 function App() {
   const [active, setActive] = useState(1)
   const [search, setSearch] = useState("")
+  const [click, setClick] = useState(false)
 
   return (
     <>
-      <Header search={search} setSearch={setSearch} active={active} setActive={setActive} />
+      <Header search={search} click={click} setClick={setClick} setSearch={setSearch} active={active} setActive={setActive} />
       <Routes>
         <Route
           index
           element={
             <Suspense fallback={<div></div>}>
-              <Main search={search} setSearch={setSearch} active={active} setActive={setActive}/>
+              <Main search={search} setSearch={setSearch} click={click} setClick={setClick} active={active} setActive={setActive}/>
             </Suspense>
           }
         />

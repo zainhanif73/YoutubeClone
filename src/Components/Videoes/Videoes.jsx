@@ -53,8 +53,6 @@ function Videoes() {
 
     }, [videoId])
 
-    console.log(video)
-
     return (
         <>
             <div className='flex flex-wrap md:flex-nowrap justify-between mb-24 md:mr-8'>

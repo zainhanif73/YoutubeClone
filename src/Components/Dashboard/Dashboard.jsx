@@ -4,7 +4,7 @@ import { act } from 'react-dom/test-utils';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Tick from "../../svgs/Tick"
 
-function Dashboard({ active, setActive, search, setSearch }) {
+function Dashboard({ active, setActive, search, setSearch, click , setClick }) {
 
     const [data, setData] = useState();
     const navigate = useNavigate();
@@ -207,7 +207,7 @@ function Dashboard({ active, setActive, search, setSearch }) {
                 console.error(error);
             });
         }
-    }, [active])
+    }, [active, click])
         
     return (
         <>

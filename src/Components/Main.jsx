@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import Dashboard from './Dashboard/Dashboard';
-import Header from './Dashboard/Header';
 import Sidebar from './Dashboard/Sidebar';
 
-function Main({search,setSearch,active,setActive}) {
+function Main({search,setSearch,active,setActive,click,setClick}) {
 
     return (
         <>
@@ -12,7 +11,7 @@ function Main({search,setSearch,active,setActive}) {
                     <Sidebar search={search} setSearch={setSearch} active={active} setActive={setActive} />
                 </div>
                 <div>
-                    <Dashboard search={search} setSearch={setSearch} active={active} setActive={setActive} />
+                    <Dashboard search={search} click={click} setClick={setClick} setSearch={setSearch} active={active} setActive={setActive} />
                 </div>
             </div>
         </>

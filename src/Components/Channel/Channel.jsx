@@ -5,7 +5,6 @@ import Tick from "../../svgs/Tick"
 
 function Channel() {
     var channelId = window.location.href.split("/")[window.location.href.split("/").length - 1];
-    console.log(channelId)
     const [channel, setChannel] = useState();
     const [data, setData] = useState();
     const navigate = useNavigate();
