@@ -46,7 +46,6 @@ function Videoes() {
 
         axios.request(options).then(function (response) {
             setVideo(response.data.items[0]);
-            console.log(response.data.items[0]);
         }).catch(function (error) {
             console.error(error);
         });

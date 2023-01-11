@@ -4,11 +4,14 @@ import { act } from 'react-dom/test-utils';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Tick from "../../svgs/Tick"
 
-function Dashboard({ active, setActive, search, setSearch, click , setClick }) {
+function Dashboard({ active, setActive, search, setSearch, click, setClick }) {
 
     const [data, setData] = useState();
     const navigate = useNavigate();
     var [channel, setChannel] = useState();
+    const [startVideo, setStartVideo] = useState(false);
+
+    console.log(startVideo)
 
     const url = {
         1: 'https://youtube-v31.p.rapidapi.com/search',
@@ -135,7 +138,6 @@ function Dashboard({ active, setActive, search, setSearch, click , setClick }) {
 
     ]
 
-
     const options = {
         method: 'GET',
         url: url[1],
@@ -164,7 +166,7 @@ function Dashboard({ active, setActive, search, setSearch, click , setClick }) {
         url: url[1],
         params:
         {
-            q: search, 
+            q: search,
             part: 'snippet,id',
             regionCode: 'US',
             maxResults: '50',
@@ -181,7 +183,7 @@ function Dashboard({ active, setActive, search, setSearch, click , setClick }) {
             axios.request(
                 options1
             ).then(function (response) {
-                
+
                 setChannel(response.data)
             }).catch(function (error) {
                 console.error(error);
@@ -208,7 +210,11 @@ function Dashboard({ active, setActive, search, setSearch, click , setClick }) {
             });
         }
     }, [active, click])
-        
+
+    function check() {
+        console.log('zaza')
+    }
+
     return (
         <>
             <div className='flex flex-col'>
@@ -230,23 +236,24 @@ function Dashboard({ active, setActive, search, setSearch, click , setClick }) {
                 {active === 16 && <div className='text-white mt-4 font-[600] text-[36px] ml-8'>Gym <span className='text-[#FC1503]'>Videos</span></div>}
                 {active === 17 && <div className='text-white mt-4 font-[600] text-[36px] ml-8'>Crypto <span className='text-[#FC1503]'>Videos</span></div>}
                 {active === 18 && <div className='text-white mt-4 font-[600] text-[36px] ml-8'>{search} <span className='text-[#FC1503]'>Videos</span></div>}
+                
                 <div className='flex flex-wrap'>
                     {channel && active === 2 && <div>
                         <div className='flex flex-col w-[300px] mt-8 ml-8' >
                             <img className='rounded-full' src={channel.items[0].snippet.thumbnails.high.url} alt="" style={{ width: "182px", height: "182px" }} />
                             <div className='text-[#ffffff] p-6 font-[600]'>
-                                <div className='mt-4 flex cursor-pointer' onClick={()=>{navigate("/channel/"+channel.items[0].id)}}><div className='flex cursor-pointer' onClick={()=>{navigate("/channel/"+channel.items[0].id)}}>{channel.items[0].snippet.title} <span className='ml-2 pt-1'><Tick /></span></div></div>
+                                <div className='mt-4 flex cursor-pointer' onClick={() => { navigate("/channel/" + channel.items[0].id) }}><div className='flex cursor-pointer' onClick={() => { navigate("/channel/" + channel.items[0].id) }}>{channel.items[0].snippet.title} <span className='ml-2 pt-1'><Tick /></span></div></div>
                             </div>
                         </div>
                     </div>}
                     {data && data.length &&
                         data?.map((data, index) =>
-                            <div className='flex flex-col cursor-pointer w-[300px] ml-8 mt-2'  key={data.snippet.channelId+"/"+index}>
-                                <div className='h-[180px] text-white' onClick={()=>{navigate("/videoes/"+data.snippet.channelId+"/"+data.id.videoId)}} style={{ backgroundSize:'cover',backgroundPosition:'center center' ,backgroundRepeat:'no-repeat',backgroundImage: `url(${data.snippet.thumbnails.high.url})` }}></div>
+                            <div className='flex flex-col hover:scale-125 transition ease-in-out delay-150 cursor-pointer w-[300px] ml-8 mt-2' key={data.snippet.channelId + "/" + index}>
+                                <div className='h-[180px] text-white' onClick={() => { navigate("/videoes/" + data.snippet.channelId + "/" + data.id.videoId) }} style={{ backgroundSize: 'cover', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat', backgroundImage: `url(${data.snippet.thumbnails.high.url})` }}></div>
                                 {/* <img src={data.snippet.thumbnails.high.url} alt="" style={{ width: "480px", height: "360px" }} /> */}
                                 <div className='bg-[#1e1e1e] text-[#ffffff] h-[130px] p-6 font-[600]'>
-                                    <span><div className='hover:cursor-pointer' onClick={()=>{navigate("/videoes/"+data.snippet.channelId+"/"+data.id.videoId)}}>{data.snippet.title.substring(0, 55)}</div> </span>
-                                    <div className='text-[#545554] mt-4 flex cursor-pointer' onClick={()=>{navigate("/channel/"+data.snippet.channelId)}} ><div className='flex' >{data.snippet.channelTitle} <span className='ml-2 pt-1'><Tick /></span></div></div>
+                                    <span><div className='hover:cursor-pointer' onClick={() => { navigate("/videoes/" + data.snippet.channelId + "/" + data.id.videoId) }}>{data.snippet.title.substring(0, 55)}</div> </span>
+                                    <div className='text-[#545554] mt-4 flex cursor-pointer' onClick={() => { navigate("/channel/" + data.snippet.channelId) }} ><div className='flex' >{data.snippet.channelTitle} <span className='ml-2 pt-1'><Tick /></span></div></div>
                                 </div>
                             </div>
                         )
