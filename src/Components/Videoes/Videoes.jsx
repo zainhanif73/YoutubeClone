@@ -37,6 +37,7 @@ function Videoes() {
 
 
     useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
         // videoId = window.location.href.split("/")[window.location.href.split("/").length - 1].split("+")[1];
         axios.request(channelVideoes).then(function (response) {
             setData1(response.data.items)
