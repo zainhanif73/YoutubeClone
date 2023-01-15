@@ -136,46 +136,6 @@ function Dashboard({ active, setActive, search, setSearch, click, setClick }) {
 
     ]
 
-    const options = {
-        method: 'GET',
-        url: url[1],
-        params: params[active - 1],
-        headers: {
-            'X-RapidAPI-Key': '6749cf4ac5msh2cbbef89b3ffaedp1b3ec3jsn6a85864b62ce',
-            'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-        }
-    };
-
-    const options1 = {
-        method: 'GET',
-        url: url[2],
-        params: {
-            part: 'snippet,statistics',
-            id: 'UCmXmlB4-HJytD7wek0Uo97A'
-        },
-        headers: {
-            'X-RapidAPI-Key': '6749cf4ac5msh2cbbef89b3ffaedp1b3ec3jsn6a85864b62ce',
-            'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-        }
-    }
-
-    const searchOption = {
-        method: 'GET',
-        url: url[1],
-        params:
-        {
-            q: search,
-            part: 'snippet,id',
-            regionCode: 'US',
-            maxResults: '50',
-            order: 'date'
-        },
-        headers: {
-            'X-RapidAPI-Key': '6749cf4ac5msh2cbbef89b3ffaedp1b3ec3jsn6a85864b62ce',
-            'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-        }
-    }
-
     useEffect(() => {
         setData()
         if (active == 2) {
@@ -238,7 +198,7 @@ function Dashboard({ active, setActive, search, setSearch, click, setClick }) {
                     </div>}
                     {data && data.length &&
                         data?.map((data, index) =>
-                            <div className='flex flex-col hover:scale-125 transition ease-in-out delay-150 cursor-pointer w-[300px] ml-8 mt-2' key={data.snippet.channelId + "/" + index}>
+                            <div className='flex flex-col hover:scale-110 transition ease-in-out delay-150 cursor-pointer w-[300px] ml-8 mt-2' key={data.snippet.channelId + "/" + index}>
                                 <div className='h-[180px] text-white' onClick={() => { navigate("/videoes/" + data.snippet.channelId + "/" + data.id.videoId) }} style={{ backgroundSize: 'cover', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat', backgroundImage: `url(${data.snippet.thumbnails.high.url})` }}></div>
                                 {/* <img src={data.snippet.thumbnails.high.url} alt="" style={{ width: "480px", height: "360px" }} /> */}
                                 <div className='bg-[#1e1e1e] text-[#ffffff] h-[130px] p-6 font-[600]'>
