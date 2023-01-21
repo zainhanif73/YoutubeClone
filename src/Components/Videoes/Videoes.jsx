@@ -70,7 +70,7 @@ function Videoes() {
                                 {video.snippet.title}
                             </div>
                             <div className='flex justify-between text-[#ffffff]'>
-                                <div className='text-[#ffffff] font-[500] mt-4  ml-4 flex cursor-pointer' onClick={() => { navigate("/channel/" + video.snippet.channelId) }} ><div className='flex' >{video.snippet.channelTitle} <span className='ml-2 pt-1'><Tick /></span></div></div>
+                                <div className='text-[#ffffff] rounded-t-[10px] font-[500] mt-4  ml-4 flex cursor-pointer' onClick={() => { navigate("/channel/" + video.snippet.channelId) }} ><div className='flex' >{video.snippet.channelTitle} <span className='ml-2 pt-1'><Tick /></span></div></div>
                                 <div className='mt-4 text-[#545554]'>
                                     <span>
                                         {video.statistics.viewCount? video.statistics.viewCount : 0} views
