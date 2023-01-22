@@ -187,7 +187,7 @@ function Dashboard({ active, setActive, search, setSearch, click, setClick }) {
                 {active === 17 && <div className='text-white mt-4 font-[600] text-[36px] ml-8'>Crypto <span className='text-[#FC1503]'>Videos</span></div>}
                 {active === 18 && <div className='text-white mt-4 font-[600] text-[36px] ml-8'>{search} <span className='text-[#FC1503]'>Videos</span></div>}
 
-                <div className='flex flex-wrap'>
+                <div className='flex justify-center flex-wrap'>
                     {channel && active === 2 && <div>
                         <div className='flex flex-col w-[300px] mt-8 ml-8' >
                             <img className='rounded-full' src={channel.items[0].snippet.thumbnails.high.url} alt="" style={{ width: "182px", height: "182px" }} />
